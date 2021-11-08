@@ -16,8 +16,7 @@
                 <views:NamedImageView IsDirectory="{Binding File.IsDirectory}"
                                       Name="{Binding File.FileName, StringFormat='File Name: {0}'}"
                                       Date="{Binding File.LastEdited, StringFormat='Last Modified: {0}'}"
-                                      Size="{Binding File.Size, Converter={StaticResource FileSizeConverter}, StringFormat='Size: {0}'}"
-                                      BackgroundColor="Aqua"/>
+                                      Size="{Binding File.Size, Converter={StaticResource FileSizeConverter}, StringFormat='Size: {0}'}"/>
             </StackLayout>
         </StackLayout>
         
