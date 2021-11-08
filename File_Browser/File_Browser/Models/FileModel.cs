@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace File_Browser.Models
 {
@@ -7,6 +8,8 @@ namespace File_Browser.Models
         public string FullPath { get; set; }
         
         public string FileName { get; set; }
+
+        public string ImageName => IsDirectory ? "icfolder" : "icfile";
         
         public DateTime LastEdited { get; set; }
         

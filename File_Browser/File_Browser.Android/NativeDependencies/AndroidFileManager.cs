@@ -18,10 +18,10 @@ namespace File_Browser.Android.NativeDependencies
             _context = context;
         }
         
-        public List<FileModel> GetRootFiles()
+        public List<FileModel> GetRootFiles(string path)
         {
             var files = new List<FileModel>();
-            var rootDir = Environment.GetExternalStoragePublicDirectory("");
+            var rootDir = Environment.GetExternalStoragePublicDirectory(path);
             if (rootDir != null)
             {
                 var dirListFiles = rootDir.ListFiles();

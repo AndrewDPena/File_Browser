@@ -5,6 +5,6 @@ namespace File_Browser.Interfaces
 {
     public interface IFileManager
     {
-        List<FileModel> GetRootFiles();
+        List<FileModel> GetRootFiles(string path);
     }
 }

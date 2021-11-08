@@ -3,17 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:File_Browser"
              xmlns:helpers="clr-namespace:File_Browser.ViewHelpers;assembly=File_Browser"
-             x:Class="File_Browser.ListPage">
+             xmlns:views="clr-namespace:File_Browser.Views;assembly=File_Browser"
+             x:Class="File_Browser.ListPage"
+             Title="File Browser">
 <ContentPage.Resources>
     <helpers:DateTimeConverter x:Key="DateTimeConverter"></helpers:DateTimeConverter>
 </ContentPage.Resources>
 
     <StackLayout>
+        <Entry Text="{Binding FilterString}"
+               Placeholder="Filter by..."/>
         <ListView x:Name="ListView" ItemsSource="{Binding FileList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding FileName}" 
-                              Detail="{Binding LastEdited, Converter={StaticResource DateTimeConverter}, StringFormat='Last Modified: {0}'}" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding ImageName}"
+                                   WidthRequest="64"
+                                   HeightRequest="64"
+                                   helpers:ImageTintEffect.TintColor = "Chartreuse" />
+                            <StackLayout>
+                                <Label Text ="{Binding FileName}" />
+                                <Label Text ="{Binding LastEdited, Converter={StaticResource DateTimeConverter}, StringFormat='Last Modified: {0}'}"
+                                       helpers:TimeElapsedColorBehavior.TimeElapsed="{Binding LastEdited}"/>
+                                <!--<views:NamedImageView IsDirectory="{Binding IsDirectory}"
+                                                      Name="{Binding FileName}"
+                                                      BackgroundColor="Aqua"/>-->
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

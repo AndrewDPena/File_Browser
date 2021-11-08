@@ -2,18 +2,29 @@
 
 namespace File_Browser.Views
 {
-    public class NamedImageView : Image
+    public class NamedImageView : View
     {
         public string Name
         {
             get => (string)GetValue(NameProperty); 
             set => SetValue(NameProperty, value);
         }
-        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(NamedImageView),default(string), propertyChanged: PropertyChanged );
 
-        private static void PropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        public string Date
         {
-            throw new System.NotImplementedException();
+            get => (string)GetValue(DateProperty);
+            set => SetValue(DateProperty, value);
         }
+
+        public bool IsDirectory
+        {
+            get => (bool)GetValue(IsDirectoryProperty); 
+            set => SetValue(IsDirectoryProperty, value);
+        }
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(NamedImageView),default(string));
+        
+        public static readonly BindableProperty DateProperty = BindableProperty.Create(nameof(Date), typeof(string), typeof(NamedImageView),default(string));
+
+        public static readonly BindableProperty IsDirectoryProperty = BindableProperty.Create(nameof(IsDirectory), typeof(bool), typeof(NamedImageView),default(bool));
     }
 }

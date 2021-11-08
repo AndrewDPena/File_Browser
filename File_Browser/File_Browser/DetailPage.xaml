@@ -2,12 +2,21 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="File_Browser.DetailPage">
+             xmlns:views="clr-namespace:File_Browser.Views;assembly=File_Browser"
+             x:Class="File_Browser.DetailPage"
+             Title="{Binding File.FileName}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <views:NamedImageView IsDirectory="{Binding File.IsDirectory}"
+                                      Name="{Binding File.FileName, StringFormat='File Name: {0}'}"
+                                      Date="{Binding File.LastEdited, StringFormat='Last Modified: {0}'}"
+                                      BackgroundColor="Aqua"/>
+            </StackLayout>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
