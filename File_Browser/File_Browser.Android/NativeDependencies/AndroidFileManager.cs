@@ -42,7 +42,8 @@ namespace File_Browser.Android.NativeDependencies
                 FileName = file.Name,
                 FullPath = file.AbsolutePath,
                 LastEdited = date,
-                IsDirectory = file.IsDirectory
+                IsDirectory = file.IsDirectory,
+                Size = file.Length()
             };
             return fileModel;
         }

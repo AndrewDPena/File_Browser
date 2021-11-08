@@ -20,6 +20,7 @@ namespace File_Browser.Android.Renderers
         private ImageView _imageView;
         private TextView _textView;
         private TextView _dateLastEdited;
+        private TextView _fileSize;
         protected override void OnElementChanged(ElementChangedEventArgs<NamedImageView> e)
         {
             base.OnElementChanged(e);
@@ -29,6 +30,7 @@ namespace File_Browser.Android.Renderers
                 _imageView = control.FindViewById<ImageView>(Resource.Id.image_view);
                 _textView = control.FindViewById<TextView>(Resource.Id.text_view);
                 _dateLastEdited = control.FindViewById<TextView>(Resource.Id.date_last_edited);
+                _fileSize = control.FindViewById<TextView>(Resource.Id.file_size);
                 SetNativeControl(control);
             }
 
@@ -37,6 +39,7 @@ namespace File_Browser.Android.Renderers
                 SetImage(e.NewElement);
                 SetText(e.NewElement);
                 SetDate(e.NewElement);
+                SetSize(e.NewElement);
             }
         }
 
@@ -53,6 +56,11 @@ namespace File_Browser.Android.Renderers
         private void SetDate(NamedImageView e)
         {
             _dateLastEdited.Text = e.Date;
+        }
+        
+        private void SetSize(NamedImageView e)
+        {
+            _fileSize.Text = e.Size;
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

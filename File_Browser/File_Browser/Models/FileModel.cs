@@ -14,5 +14,7 @@ namespace File_Browser.Models
         public DateTime LastEdited { get; set; }
         
         public bool IsDirectory { get; set; }
+        
+        public long Size { get; set; }
     }
 }

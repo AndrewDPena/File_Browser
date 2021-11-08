@@ -13,23 +13,26 @@
     <StackLayout>
         <Entry Text="{Binding FilterString}"
                Placeholder="Filter by..."/>
-        <ListView x:Name="ListView" ItemsSource="{Binding FileList}">
+        <ListView x:Name="ListView" ItemsSource="{Binding FileList}" VerticalOptions="FillAndExpand" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding ImageName}"
-                                   WidthRequest="64"
-                                   HeightRequest="64"
-                                   helpers:ImageTintEffect.TintColor = "Chartreuse" />
-                            <StackLayout>
-                                <Label Text ="{Binding FileName}" />
-                                <Label Text ="{Binding LastEdited, Converter={StaticResource DateTimeConverter}, StringFormat='Last Modified: {0}'}"
-                                       helpers:TimeElapsedColorBehavior.TimeElapsed="{Binding LastEdited}"/>
-                                <!--<views:NamedImageView IsDirectory="{Binding IsDirectory}"
-                                                      Name="{Binding FileName}"
-                                                      BackgroundColor="Aqua"/>-->
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding ImageName}"
+                                       WidthRequest="48"
+                                       HeightRequest="48"
+                                       helpers:ImageTintEffect.TintColor = "Chartreuse" />
+                                <StackLayout>
+                                    <Label Text ="{Binding FileName}" />
+                                    <Label Text ="{Binding LastEdited, Converter={StaticResource DateTimeConverter}, StringFormat='Last Modified: {0}'}"/>
+                                </StackLayout>
                             </StackLayout>
+                            <BoxView WidthRequest="160"
+                                     HeightRequest="3"
+                                     VerticalOptions="Fill"
+                                     HorizontalOptions="Fill"
+                                     helpers:TimeElapsedColorBehavior.TimeElapsed="{Binding LastEdited}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

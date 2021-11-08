@@ -26,29 +26,29 @@ namespace File_Browser.ViewHelpers
                 var span = DateTime.Now - dateTime;
                 if (span.TotalSeconds < 60)
                 {
-                    view.BackgroundColor = Color.Chartreuse;
+                    view.BackgroundColor = Color.Turquoise;
                     return;
                 }
 
                 if (span.TotalHours < 1)
                 {
-                    view.BackgroundColor = Color.Goldenrod;
+                    view.BackgroundColor = Color.DarkTurquoise;
                     return;
                 }
 
                 if (span.TotalHours < 24)
                 {
-                    view.BackgroundColor = Color.DodgerBlue;
+                    view.BackgroundColor = Color.Blue;
                     return;
                 }
 
                 if (span.TotalDays < 7)
                 {
-                    view.BackgroundColor = Color.SaddleBrown;
+                    view.BackgroundColor = Color.DarkBlue;
                     return;
                 }
 
-                view.BackgroundColor = Color.Tomato;
+                view.BackgroundColor = Color.Navy;
             }
         }
     }

@@ -3,17 +3,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:File_Browser.Views;assembly=File_Browser"
+             xmlns:helpers="clr-namespace:File_Browser.ViewHelpers;assembly=File_Browser"
              x:Class="File_Browser.DetailPage"
              Title="{Binding File.FileName}">
+<ContentPage.Resources>
+    <helpers:FileSizeConverter x:Key="FileSizeConverter"></helpers:FileSizeConverter>
+</ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="Center"
-                   HorizontalOptions="CenterAndExpand" />
             <StackLayout>
                 <views:NamedImageView IsDirectory="{Binding File.IsDirectory}"
                                       Name="{Binding File.FileName, StringFormat='File Name: {0}'}"
                                       Date="{Binding File.LastEdited, StringFormat='Last Modified: {0}'}"
+                                      Size="{Binding File.Size, Converter={StaticResource FileSizeConverter}, StringFormat='Size: {0}'}"
                                       BackgroundColor="Aqua"/>
             </StackLayout>
         </StackLayout>
